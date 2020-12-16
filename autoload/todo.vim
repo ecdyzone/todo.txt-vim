@@ -62,7 +62,7 @@ function! todo#PrependDate()
     if (getline(".") =~ '\v^\(')
         execute "normal! 0f)a\<space>\<esc>l\"=strftime(\"%Y-%m-%d\")\<esc>P"
     else
-        normal! I=strftime("%Y-%m-%d ")
+        execute "normal! I\<c-r>=strftime(\"%Y-%m-%d \")\<cr>"
     endif
 endfunction
 
