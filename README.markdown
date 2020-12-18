@@ -68,12 +68,12 @@ all you need to be productive. See an example Todo.txt file":
 
     (A) Call Mom @Phone +Family
     (A) Schedule annual checkup +Health
-    (B) Outline chapter 5 +FamilyNovel @Computer
-    (C) Add cover sheets @ComputerOffice +FamilyTPSReports
-    Plan backyard herb garden @ComputerHome
-    Pick up milk @ComputerGroceryStore
-    Research self-publishing services +FamilyNovel @ComputerComputer
-    x Download Todo.txt mobile app @ComputerPhone
+    (B) Outline chapter 5 +Novel @Computer
+    (C) Add cover sheets @Office +TPSReports
+    Plan backyard herb garden @Home
+    Pick up milk @GroceryStore
+    Research self-publishing services +Novel @Computer
+    x Download Todo.txt mobile app @Phone
 
 ### Why this fork ?
 
@@ -197,10 +197,10 @@ a completion, then add the following lines to your vimrc:
 This fork provides a hierarchical sorting function designed to do by project
 and/or by context sorts and a priority sort.
 
-`<LocalLeader>sc` : Sort the file by context then by priority
-`<LocalLeader>scp` : Sort the file by context, project then by priority
-`<LocalLeader>sp` : Sort the file by project then by priority
-`<LocalLeader>spc` : Sort the file by project, context then by priority
++ `<LocalLeader>sc` : Sort the file by context then by priority
++ `<LocalLeader>scp` : Sort the file by context, project then by priority
++ `<LocalLeader>sp` : Sort the file by project then by priority
++ `<LocalLeader>spc` : Sort the file by project, context then by priority
 
 The user can give argument for the two calls to vim sort function by changing
 the following variables:
