@@ -336,6 +336,13 @@ disable this behavior by setting the following global variable:
 ## Fold
 
 Todo.txt files can be folded by projects or context (see `:help fold`), by
-default they are foldable by context, to use project fold :
+default they are foldable by context, to use project fold add the following to
+your vimrc:
 
     let g:Todo_fold_char='+'
+
+Note that the fold method by default changes to match the sort order regardless
+of what Todo_fold_char is set to.  If you prefer to keep the fold method
+constant even after changing the sort method set the variable below as follows:
+
+    let g:Todo_update_fold_on_sort=0
