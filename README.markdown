@@ -335,8 +335,8 @@ disable this behavior by setting the following global variable:
 
 ## Fold
 
-Todo.txt files can be folded by projects or context (see `:help fold`), by
-default they are foldable by context, to use project fold add the following to
+Todo.txt files can be folded by projects or context (see `:help fold`). By
+default they are foldable by context. To use project fold add the following to
 your vimrc:
 
     let g:Todo_fold_char='+'
