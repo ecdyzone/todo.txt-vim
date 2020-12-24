@@ -136,8 +136,11 @@ names are recognized as todo:
     [Tt]odo-YYYY-MM-DD.txt
     [Tt]odo.txt
     [Tt]oday.txt
+    .todo/*.txt
+    $TODO_DIR/*.txt
+    $TODO_FILE
 
-And obviously the same are recognize as done:
+Similarly, the following are recognized as done:
 
     YYYY-MM-[Dd]one.txt
     YYYY-MM-DD[Dd]one.txt
@@ -145,6 +148,10 @@ And obviously the same are recognize as done:
     [Dd]one-YYYY-MM-DD.txt
     [Dd]one.txt
     [Dd]one-[Tt]oday.txt
+    $DONE_FILE
+
+Where `$TODO_DIR`, `$TODO_FILE`, and `$DONE_FILE` are optional environment variables
+that correspond to those used by [todo.txt-cli](https://github.com/todotxt/todo.txt-cli/)
 
 Moreover, `<LocalLeader>D` moves the task under the cursor to the done.txt
 file corresponding to the current todo.txt, aka if you are editing
