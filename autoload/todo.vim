@@ -141,17 +141,23 @@ endfunction
 function! todo#RemoveCompleted()
     " Check if we can write to done.txt before proceeding.
     let l:target_dir = expand('%:p:h')
+    let l:currentfile=expand('%:t')
+
     if exists("g:TodoTxtForceDoneName")
         let l:done=g:TodoTxtForceDoneName
     else
-        let l:currentfile=expand('%:t')
-
         if l:currentfile =~ '[Tt]oday.txt'
             let l:done=substitute(substitute(l:currentfile,'today','done-today',''),'Today','Done-Today','')
         else
             let l:done=substitute(substitute(l:currentfile,'todo','done',''),'Todo','Done','')
         endif
     endif
+
+    if l:done == l:currentfile
+        echoerr "Done file is same as current file: ".l:done
+        return
+    endif
+
     let l:done_file = l:target_dir.'/'.l:done
     echo "Writing to ".l:done_file
     if !filewritable(l:done_file) && !filewritable(l:target_dir)
