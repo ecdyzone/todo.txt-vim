@@ -40,11 +40,11 @@ endfunction
 function! todo#PrioritizeAdd (priority)
     let oldpos=todo#GetCurpos()
     let line=getline('.')
-    if line !~ '^([A-F])'
+    if line !~ '^([A-Z])'
         :call todo#PrioritizeAddAction(a:priority)
         let oldpos[2]+=4
     else
-        exec ':s/^([A-F])/('.a:priority.')/'
+        exec ':s/^([A-Z])/('.a:priority.')/'
     endif
     call setpos('.',oldpos)
 endfunction
@@ -56,6 +56,10 @@ endfunction
 
 function! todo#RemovePriority()
     :s/^(\w)\s\+//ge
+endfunction
+
+function! todo#RemoveDue()
+    :s/\sdue:\d\{4}-\d\{2}-\d\{2}//ge
 endfunction
 
 function! todo#PrependDate()

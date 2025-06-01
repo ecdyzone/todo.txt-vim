@@ -8,7 +8,6 @@ if exists("b:current_syntax")
     finish
 endif
 
-syntax  match  TodoDone       '^[x]\s.\+$'               contains=TodoKey,TodoDate,TodoProject,TodoContext
 syntax  match  TodoPriorityA  '^(A) .\+$'             contains=TodoKey,TodoDate,TodoProject,TodoContext,TodoDueToday,TodoOverDueDate,TodoThresholdDate
 syntax  match  TodoPriorityB  '^(B) .\+$'             contains=TodoKey,TodoDate,TodoProject,TodoContext,TodoDueToday,TodoOverDueDate,TodoThresholdDate
 syntax  match  TodoPriorityC  '^(C) .\+$'             contains=TodoKey,TodoDate,TodoProject,TodoContext,TodoDueToday,TodoOverDueDate,TodoThresholdDate
@@ -43,16 +42,21 @@ syntax  match  TodoContext    '\(^\|\W\)@[^[:blank:]]\+'  contains=NONE
 let s:todayDate=strftime('%Y\-%m\-%d')
 execute 'syntax match TodoDueToday    /\v\c<due:' . s:todayDate . '>/ contains=NONE'
 
+"""" to get more colors, check :help highlight command
+"""" which takes to :so $VIMRUNTIME/syntax/hitest.vim
 " Other priority colours might be defined by the user
-highlight  default  link  TodoKey        Special
+highlight  default  link  TodoKey        htmlUnderline
 highlight  default  link  TodoDone       Comment
-highlight  default  link  TodoPriorityA  Identifier
-highlight  default  link  TodoPriorityB  statement
-highlight  default  link  TodoPriorityC  type
-highlight  default  link  TodoDate       PreProc
-highlight  default  link  TodoProject    Special
-highlight  default  link  TodoContext    Special
-highlight  default  link  TodoDueToday   Todo
+highlight  default  link  TodoPriorityA  GruvboxPurple
+highlight  default  link  TodoPriorityB  GruvboxYellow
+highlight  default  link  TodoPriorityC  GruvboxBlue
+highlight  default  link  TodoDate       GruvboxGray
+highlight  default  link  TodoProject    GruvboxOrangeBold
+highlight  default  link  TodoContext    GruvboxGreenBold
+highlight  default  link  TodoDueToday   airline_tabsel
+highlight  default  link  TodoPriorityD  GruvboxFg0
+" highlight  default  link  TodoPriorityE  GruvboxPurple
+" highlight  default  link  TodoPriorityF  GruvboxGray
 
 function! todo#GetDateRegexForPastDates(...)
     " Build a RegExp to match all dates prior to a reference date.

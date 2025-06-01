@@ -59,6 +59,10 @@ if !exists("g:Todo_txt_do_not_map") || ! g:Todo_txt_do_not_map
     noremap  <script> <silent> <buffer> <localleader>a :call todo#PrioritizeAdd('A')<CR>
     noremap  <script> <silent> <buffer> <localleader>b :call todo#PrioritizeAdd('B')<CR>
     noremap  <script> <silent> <buffer> <localleader>c :call todo#PrioritizeAdd('C')<CR>
+    noremap  <script> <silent> <buffer> <localleader>w :call todo#PrioritizeAdd('W')<CR>
+    noremap  <script> <silent> <buffer> <localleader>z :call todo#PrioritizeAdd('Z')<CR>
+
+    nnoremap <script> <silent> <buffer> <localleader>0 :call todo#RemovePriority()<CR>
 
 " Insert date {{{3
 if get(g:, "TodoTxtUseAbbrevInsertMode", 0)
@@ -74,6 +78,8 @@ else
 endif
 
     noremap  <script> <silent> <buffer> <localleader>d :call todo#PrependDate()<CR>
+    " remove due date
+    noremap  <script> <silent> <buffer> <localleader>U :call todo#RemoveDue()<CR>
 
 " Mark done {{{3
     nmap              <silent> <buffer> <localleader>x <Plug>DoToggleMarkAsDone

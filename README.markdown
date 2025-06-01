@@ -7,48 +7,49 @@
           #   #    # #    # #    #      #     ##     #        #   #  # #    #
           #   #    # #    # #    # ##   #    #  #    #         # #   # #    #
           #    ####  #####   ####  ##   #   #    #   #          #    # #    #
-
+    
                         Efficient Todo.txt management in vim
 
 ## Table of Contents
 
 1. [Release notes](#release-notes)
 2. [Introduction](#introduction)
-    1. [Todo.txt rules](#todo.txt-rules)
-    2. [Why this Fork ?](#Why-this-fork)
-    3. [Installation](#installation)
+   1. [Todo.txt rules](#todo.txt-rules)
+   2. [Why this Fork ?](#Why-this-fork)
+   3. [Installation](#installation)
 3. [TodoTxt Files](#todotxt-files)
 4. [Completion](#completion)
 5. [Hierarchical Sort](#hierarchical-sort)
 6. [Recurrence](#recurrence)
 7. [Mappings](#mappings)
-    1. [Sort](#sort)
-    2. [Priorities](#priorities)
-    3. [Dates](#dates)
-    4. [Done](#done)
+   1. [Sort](#sort)
+   2. [Priorities](#priorities)
+   3. [Dates](#dates)
+   4. [Done](#done)
 
 ## Release notes
 
-+   V0.8.1 Incorporates yet another Fretep work : highlighting for tasks due today.
++ V0.8.1 Incorporates yet another Fretep work : highlighting for tasks due today.
 
-+   v0.8 Incorporates Fretep's work on overdue dates (PR#13 and PR#16) which
-removes python dependency, allow to control the cursor position after a sort by
-todo (see (sort)[#sort] and/or issue #15) and fixes bug when sorting a file
-containing only lines with due:date (issue #14).
++ v0.8 Incorporates Fretep's work on overdue dates (PR#13 and PR#16) which
+  removes python dependency, allow to control the cursor position after a sort by
+  todo (see (sort)[#sort] and/or issue #15) and fixes bug when sorting a file
+  containing only lines with due:date (issue #14).
 
-+   v0.7.6 Incorporates [Sietse's work](https://github.com/sietse/todo.txt-vim/commit/57d45200c8b033d31c9191ee0eb0711c801cdb1d) to make cancel and mark as done mapping repeatable using [vim-repeat](https://github.com/tpope/vim-repeat).
-+   v0.7.5 Incorporates [Fievel's work](https://github.com/fievel/todo.txt-vim/commit/0863e1434e9a89ace06c4856b6cb32ba9906e3de) to make overduedates work on python3.
-+   v0.7.4 includes the overduedate support from Guilherme Victal (see pull
++ v0.7.6 Incorporates [Sietse's work](https://github.com/sietse/todo.txt-vim/commit/57d45200c8b033d31c9191ee0eb0711c801cdb1d) to make cancel and mark as done mapping repeatable using [vim-repeat](https://github.com/tpope/vim-repeat).
 
-    [request #45 on freitass version](https://github.com/freitass/todo.txt-vim/pull/45)),
-    it highlight dates in overdue tasks as an Error. It depends on a
-    Python library, however, and as such will only be able to work if your version
-    of Vim was compiled with the `+python` option (as most common versions do).
- 
-    If your Vim installation does **not** have Python support, this plugin **will work just fine** but this feature will be disabled.
++ v0.7.5 Incorporates [Fievel's work](https://github.com/fievel/todo.txt-vim/commit/0863e1434e9a89ace06c4856b6cb32ba9906e3de) to make overduedates work on python3.
 
++ v0.7.4 includes the overduedate support from Guilherme Victal (see pull
+  
+  [request #45 on freitass version](https://github.com/freitass/todo.txt-vim/pull/45)),
+  it highlight dates in overdue tasks as an Error. It depends on a
+  Python library, however, and as such will only be able to work if your version
+  of Vim was compiled with the `+python` option (as most common versions do).
+  
+  If your Vim installation does **not** have Python support, this plugin **will work just fine** but this feature will be disabled.
 
-+   Since v0.7.3, `TodoComplete` is replaced by `todo#Complete`, you might need to update your vimrc (see [completion](#completion)).
++ Since v0.7.3, `TodoComplete` is replaced by `todo#Complete`, you might need to update your vimrc (see [completion](#completion)).
 
 ## Introduction
 
@@ -120,7 +121,6 @@ Then from vim: `:Helptags` to update the doc
         cd todo.txt-vim
         cp -r ./* ~/.vim
 
-
 If you want the help installed, run `:helptags ~/.vim/doc` inside vim after
 having copied the files.  Then you will be able to get the commands help with:
 `:h todo.txt`
@@ -173,10 +173,9 @@ adding the next lines to your vimrc:
 
     " Auto complete projects
     au filetype todo imap <buffer> + +<C-X><C-O>
-
+    
     " Auto complete contexts
     au filetype todo imap <buffer> @ @<C-X><C-O>
-
 
 The `todo#Complete` function is designed to complete projects (starting by `+`)
 and context (starting by `@`). If you use it on a regular word, it will do a
@@ -198,7 +197,6 @@ a completion, then add the following lines to your vimrc:
 
     au filetype todo setlocal completeopt+=menuone
 
-
 ## Hierarchical sort
 
 This fork provides a hierarchical sorting function designed to do by project
@@ -217,10 +215,8 @@ the following variables:
 
 Defaults values are:
 
-
     g:Todo_txt_first_level_sort_mode="i"
     g:Todo_txt_second_level_sort_mode="i"
-
 
 For more information on the available flags see `help :sort`
 
@@ -251,8 +247,6 @@ prevent this behavior, add the following line to your vimrc
 
    let g:Todo_txt_do_not_map=1
 
-
-
 `<LocalLeader>` is \  by default, so ̀`<LocaLeader>-s` means you type \s
 
 ### Sort
@@ -265,8 +259,8 @@ prevent this behavior, add the following line to your vimrc
 + `<LocalLeader>sp` : Sort the file by project then by priority
 + `<LocalLeader>spc` : Sort the file by project, context then by priority
 + `<LocalLeader>sd` : Sort the file on due dates. Entries with a due date appear
-sorted by at the beginning of the file, completed tasks are moved to the bottom and
-the rest of the file is not modified.
+  sorted by at the beginning of the file, completed tasks are moved to the bottom and
+  the rest of the file is not modified.
 
 When you sort by due dates, at the end of the sort, your cursor will be placed
 at the top of the file. This behavior can be set with the following global
@@ -283,20 +277,25 @@ Possible values are :
 
 ### Priorities
 
++ `<LocalLeader>0` : Remove the priority of the current line
 + `<LocalLeader>j` : Lower the priority of the current line
 + `<LocalLeader>k` : Increase the priority of the current line
 + `<LocalLeader>a` : Add the priority (A) to the current line
 + `<LocalLeader>b` : Add the priority (B) to the current line
 + `<LocalLeader>c` : Add the priority (C) to the current line
++ `<LocalLeader>w` : Add the priority (W) to the current line
++ `<LocalLeader>z` : Add the priority (Z) to the current line
 
 ### Dates
 
 + `<LocalLeader>d` : Insert the current date
 + `<LocalLeader>p` : Postpone the due date (accepts a count)
 + `<LocalLeader>P` : Decrement the due date (accepts a count)
++ `<LocalLeader>U` : Remove the due date
 + `date<tab>`  : (Insert mode) Insert the current date
 + `due:`  : (Insert mode) Insert `due:` followed by the current date
 + `DUE:`  : (Insert mode) Insert `DUE:` followed by the current date
+
 
 If you would like the creation date (today) prefixed on new lines, add the
 following to your vimrc:
@@ -314,20 +313,18 @@ Abbreviations uses word separator to expand the abbreviations, thus `<Tab>`
 is unavailable on abbreviations. Turning abbreviations mode will change
 `date<Tab>` mapping into `date:`. The resulting abbreviations would be: 
 
-+    `date:`  : (Insert mode) Insert the current date
-+    `due:`  : (Insert mode) Insert `due:` followed by the current date
-+    `DUE:`  : (Insert mode) Insert `DUE:` followed by the current date
-
++ `date:`  : (Insert mode) Insert the current date
++ `due:`  : (Insert mode) Insert `due:` followed by the current date
++ `DUE:`  : (Insert mode) Insert `DUE:` followed by the current date
 
 ### Done
-
 
 + `<LocalLeader>x` : Toggle mark task as done (inserts or remove current
 + date as completion date)
 + `<LocalLeader>C` : Toggle mark task cancelled
 + `<LocalLeader>X` : Mark all tasks as completed
 + `<LocalLeader>D` : Move completed tasks to done file, see [TodoTxt
-Files](#todotxt-files)
+  Files](#todotxt-files)
 
 When you mark an item with a priority as done, it is assigned a priority tag
 like `pri:A` so that the priority can be restored if the item is toggled back
@@ -353,3 +350,28 @@ of what Todo_fold_char is set to.  If you prefer to keep the fold method
 constant even after changing the sort method set the variable below as follows:
 
     let g:Todo_update_fold_on_sort=0
+
+# ------------------
+
+# My Editions
+
+[markor/doc/2020-09-26-vimwiki-sync-plaintext-to-do-and-notes-todotxt-markdown.md at master · gsantner/markor · GitHub](https://github.com/gsantner/markor/blob/master/doc/2020-09-26-vimwiki-sync-plaintext-to-do-and-notes-todotxt-markdown.md)
+
+I started using the [Getting Things Done](https://en.wikipedia.org/wiki/Getting_Things_Done) method at the same time, and it has been wildly successful for me. I use:
+
+- Markor's QuickEdit.md as scratch pad/inbox,
+- the "next" lists go into todo.txt using priorities: A (today), B (next days), C (this week),
+- the "waiting" list is also part of my todo.txt, I use priority 'W' for that,
+- likewise the "someday" list goes into todo.txt with priority 'Z',
+- notes, extra material, and future (blocked) todo items go into `projects.md`, using the `+ProjectName` tags as headings.
+
+I do my weekly review every Friday afternoon, at work EOD.
+
+Finally I have some helper shell aliases for conveniently accessing my notes and TODOs:
+
+```shell
+alias notes='(cd ~/Documents/notes; vim .)'
+alias todo='(cd ~/Documents/notes; vim todo.txt)'
+```
+
+The `cd` is because I often need to open more than one file, e.g. `projects.md` when I edit `todo.txt`.
