@@ -1,3 +1,8 @@
+# About credits and forks
+
+The original code is from [freitass](https://github.com/freitass/todo.txt-vim), but [my fork](https://github.com/ecdyzone/todo.txt-vim) is from [dbeniamine's fork](https://gitlab.com/dbeniamine/todo.txt-vim)
+
+
 # Todo.txt-vim
 
         #####                                                #     #
